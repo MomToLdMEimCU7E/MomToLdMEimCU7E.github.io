@@ -11,30 +11,34 @@
     <title>增加博文</title>
 </head>
 <body>
-    <div class="box">
-        <div class="bt">新增博客</div>
-        <div class="title">title
-            <input type="text" class="title1" id="title_s" value="" />
+    <form id="postInfo">
+        <div class="box">
+            <div class="bt">新增博客</div>
+            <div class="title">title
+                <input type="text" class="title1" id="title_s" value="" />
+            </div>
+            <div class="body">body
+                <textarea class="body1" type="text" id="content_s"></textarea>
+            </div>
+            <div class="date">上交日期
+                <input type="text" class="date1" id="date_s" value="" />
+            </div>
+            <input class="submit" type="submit" id="submit" value="提交">
         </div>
-        <div class="body">body
-            <textarea class="body1" type="text" id="content_s"></textarea>
-        </div>
-        <div class="date">上交日期
-            <input type="text" class="date1" id="date_s" value="" />
-        </div>
-        <input class="submit" type="submit" id="submit" value="提交">
-    </div>
+    </form>
     <script>
         $("#submit").click(function(){
+            var formObject = {};
+            var formArray = $("#postInfo").serializeArray();
+            $.each(formArray,function(i,item){
+                formObject[item.name]=item.value;
+            });
             $.ajax({
-                type:"POST",
+                type:"get",
                 url:"../data/posts.json",
-                dataType:"JSON",
-                data:{
-                    title:$("#title_S").val(),
-                    content:$("#content_s").val(),
-                    createdtime:$("#date_s").val()
-                },
+                dataType:'json',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(formObject),
                 success: function(data){
                     alert("提交成功");
                 },
