@@ -8,6 +8,10 @@ function newText(){
         success: function(result){
             alert("提交成功");
             console.log(result);
+            if (result.resultCode == 200) {
+                alert("SUCCESS");
+            }
+            ;
         },
         error: function(){
             alert("提交失败");
