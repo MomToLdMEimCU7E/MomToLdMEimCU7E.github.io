@@ -1,6 +1,6 @@
 function newText(){
     $.ajax({
-        type:"POST",
+        type:"get",
         url:"../data/posts.json",
         dataType:'json',
         contentType: "application/json; charset=utf-8",
