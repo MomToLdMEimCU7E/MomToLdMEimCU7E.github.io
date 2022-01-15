@@ -39,9 +39,3 @@ Router.route('/contact',function(){
 Router.route('/new',function(){
   display_page('./views/new.html');
 })
-Router.route('/doList',function(){
-  display_page('./views/doList.html');
-})
-
-
-
